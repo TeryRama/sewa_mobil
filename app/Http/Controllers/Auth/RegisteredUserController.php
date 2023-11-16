@@ -57,7 +57,7 @@ class RegisteredUserController extends Controller
 
             return redirect(RouteServiceProvider::HOME);
         } catch (\Exception $e) {
-            dd($e->getMessage()); // Tampilkan pesan kesalahan
+            dd($e->getMessage()); // Gunakan dd() tanpa namespace
         }
     }
 }

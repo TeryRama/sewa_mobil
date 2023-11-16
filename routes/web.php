@@ -40,6 +40,8 @@ Route::get('/car-returns', [CarReturnController::class, 'index'])->name('car-ret
 
 Route::get('/cars/create', [CarManagementController::class, 'create'])->name('cars.create');
 Route::post('/cars', [CarManagementController::class, 'store'])->name('cars.store');
+Route::get('/cars/edit/{id}', [CarManagementController::class, 'edit'])->name('cars.edit');
+Route::put('/cars/update/{id}', [CarManagementController::class, 'update'])->name('cars.update');
 Route::delete('/manage-cars/{id}', [CarManagementController::class, 'destroy'])->name('cars.destroy');
 
 

@@ -56,4 +56,32 @@ class CarManagementController extends Controller
         return redirect()->route('manage-cars')
             ->with('success', 'Car has been deleted successfully');
     }
+
+    public function edit($id)
+    {
+        $car = Car::findOrFail($id);
+        return view('manajemen.edit', compact('car'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'brand' => 'required',
+            'model' => 'required',
+            'license_plate' => 'required',
+            'rental_rate' => 'required|numeric',
+        ]);
+
+        $car = Car::findOrFail($id);
+
+        $car->update([
+            'brand' => $request->brand,
+            'model' => $request->model,
+            'license_plate' => $request->license_plate,
+            'rental_rate' => $request->rental_rate,
+        ]);
+
+        return redirect()->route('manage-cars')
+            ->with('success', 'Car updated successfully.');
+    }
 }
